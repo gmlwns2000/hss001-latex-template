@@ -1,0 +1,135 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template for Logical Writing Final Report 2022.
+% Template Written by Heejun Lee
+% Content provided by Prof. Seo Yun Jung
+% Created: 2022/12/06
+% Updated: 2022/12/06
+% Tested on Overleaf with XeLaTex 2022
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Beginner TODOs
+% 1. Change Title / Author in main.tex
+% 2. Write your abstract text in sections/abstract.tex
+% 3. Write your body text in sections/body.tex. You are freely adding more sections and splitted files using \input command.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Beginners Guide for Figure
+% For figure inside of body text, you can find example in /figures folder. Figure should be splitted into two file 'tex' and 'image' files. This is convenient way to manage your tex definition and actual image. I suggest you to add figure image in format 'pdf'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Beginners Guide for Reference
+% The auto-referencing is the main feature of latex. This is why I am creating this template... with my own efforts. You can reference any figures and tables by given label with `\ref{fig_name}`. You can give figure name with `\label{fig_name}`. You can find the example of this inside of body.tex.
+% Not only auto reference figures and tables, you can cite automatically, without considering order of citation. Latex will automatically sort your citation and format in APA style. WOW! example is `\cite{google}`. You can find example in body.tex. And you should add reference information in BibTex form into `refs.bib`.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\PassOptionsToPackage{no-math}{fontspec}
+\usepackage{xltxtra}
+\usepackage{xeCJK}
+\xeCJKsetup{
+    CJKspace=true,
+    CJKecglue={}
+}
+\setmainfont{Noto Serif}
+\setCJKmainfont{Noto Serif CJK KR}
+\setCJKsansfont{Noto Sans CJK KR}
+\setCJKmonofont{Noto Sans Mono CJK KR}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage{cuted}
+
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{ragged2e}
+\usepackage[%
+  backend=bibtex      % biber or bibtex
+%,style=authoryear    % Alphabeticalsch
+ ,style=numeric-comp  % numerical-compressed
+ ,sorting=none        % no sorting
+ ,sortcites=true      % some other example options ...
+ ,block=none
+ ,indexing=false
+ ,citereset=none
+ ,isbn=true
+ ,url=true
+ ,doi=true            % prints doi
+ ,natbib=true         % if you need natbib functions
+]{biblatex}
+\addbibresource{refs}  % better than \bibliography
+% \bibliographystyle{plain}
+\usepackage{authoraftertitle}
+
+\usepackage{anyfontsize}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{textcomp,gensymb}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{float}
+
+\marginsize{0.6in}{0.6in}{0.6in}{0.6in}
+\setlength\columnsep{0.33in}
+\renewenvironment{abstract}
+ {\par\noindent\textbf{Abstract}\ \ignorespaces \\}
+ {\par\noindent\medskip}
+\newcommand{\doublerule}[1][.4pt]{%
+  \noindent
+  \makebox[0pt][l]{\rule[.7ex]{\linewidth}{#1}}%
+  \rule[.3ex]{\linewidth}{#1}}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\scshape}{\textbf\thesection}{11pt}{\textbf}
+\titleformat{\subsection}
+  {\normalfont\scshape}{\textbf\thesubsection}{10pt}{\textbf}
+\renewcommand{\figurename}{그림}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: Change this metadata for change your title.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{논리적 글쓰기 \Large{\LaTeX}~템플릿}
+\author{이희준\\Undergraduate School of Computing\\Korea Advanced Institute of Science and Technology (KAIST)}
+
+\begin{document}
+\begin{strip}
+\vspace{-1in}
+\begin{center}
+\setstretch{1.15}{
+\textbf{\fontsize{13pt}{13pt}{\MyTitle}} \\
+\vspace{1em}
+\textbf{\fontsize{11pt}{11pt}{\MyAuthor}}
+}
+\medskip
+
+\normalsize
+
+\end{center}
+\doublerule
+\vspace{0.2cm}
+\begin{abstract}
+\fontsize{9pt}{9pt}
+\input{sections/abstract.tex}
+\end{abstract}
+\doublerule
+\end{strip}
+
+\input{sections/body.tex}
+
+\printbibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% start of appendix
+\appendix
+\setcounter{table}{0}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\input{sections/body_appendix.tex}
+% end of appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

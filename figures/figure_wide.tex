@@ -1,0 +1,23 @@
+% \begin{figure}[!t]
+% \centering
+% \includegraphics[width=\textwidth, height=5cm]{images/wide.png}
+% \caption{이건 넓은 피겨이다. 구글에서 아무 이미지나 가져왔다. 이렇게 설명문 안에서도 참조 할 수 있다~\cite{wide_wallpaper}.}
+% \label{fig:wide}
+% \centering
+% \end{figure}
+
+% \noindent
+% \includegraphics[width=\textwidth, height=5cm]{images/wide.png}
+
+\vspace{1.0em}
+\noindent
+\begin{minipage}[!t]{\textwidth}%
+\makebox[\linewidth]{%   For centring figures
+    \includegraphics[width=\linewidth]{images/wide.png}
+}
+\captionof{figure}{
+이건 넓은 피겨이다. 미니 페이지를 이용한 꼼수로 twocolumn에서도 페이지 단위의 피겨를 넣을 수 있다. 차후 개선이 필요하다. 구글에서 아무 이미지나 가져왔다. 이렇게 설명문 안에서도 참조 할 수 있다~\cite{wide_wallpaper}.
+}
+\vspace{1.0em}
+\label{fig:wide}
+\end{minipage}
