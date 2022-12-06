@@ -1,3 +1,3 @@
 # hss001-latex-template
 
-Lectured by Prof. Seo Yun Jung
+Lectured by Prof. Yun Jung Seo
