@@ -34,59 +34,86 @@
 \setCJKsansfont{Noto Sans CJK KR}
 \setCJKmonofont{Noto Sans Mono CJK KR}
 \usepackage{setspace}
-\setstretch{1.15}
 \usepackage{cuted}
 
 \usepackage[bitstream-charter]{mathdesign}
 \usepackage{ragged2e}
 \usepackage[%
-  backend=bibtex      % biber or bibtex
-%,style=authoryear    % Alphabeticalsch
- ,style=numeric-comp  % numerical-compressed
- ,sorting=none        % no sorting
- ,sortcites=true      % some other example options ...
- ,block=none
- ,indexing=false
- ,citereset=none
- ,isbn=true
- ,url=true
- ,doi=true            % prints doi
- ,natbib=true         % if you need natbib functions
+    backend=bibtex      % biber or bibtex
+    %,style=authoryear    % Alphabeticalsch
+    ,style=numeric-comp  % numerical-compressed
+    ,sorting=none        % no sorting
+    ,sortcites=true      % some other example options ...
+    ,block=none
+    ,indexing=false
+    ,citereset=none
+    ,isbn=true
+    ,url=true
+    ,doi=true            % prints doi
+    ,natbib=true         % if you need natbib functions
+    ,backref=true
 ]{biblatex}
+\DefineBibliographyStrings{english}{%
+  backrefpage = {page},% originally "cited on page"
+  backrefpages = {pages},% originally "cited on pages"
+}
 \addbibresource{refs}  % better than \bibliography
-% \bibliographystyle{plain}
 \usepackage{authoraftertitle}
+\usepackage[
+    colorlinks=true,
+    allcolors = black,
+    citecolor=blue, 
+]{hyperref} 
 
 \usepackage{anyfontsize}
 \usepackage{anysize}
 \usepackage{amsmath}
-\usepackage{hyperref}
 \usepackage{textcomp,gensymb}
-\usepackage{float}
+% \usepackage{float}
 \usepackage{lipsum}
 \usepackage{graphicx}
 \usepackage{graphics}
-\usepackage{caption}
+\usepackage[font=small,labelfont=bf]{caption}
 \usepackage{subcaption}
 \usepackage{url}
 \usepackage{multicol}
 \usepackage{float}
+\usepackage{titlesec}
+\usepackage{adjustbox}
+% \usepackage{dblfloatfix}
+% \usepackage{stfloats}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   For change page format
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Page margin
 \marginsize{0.6in}{0.6in}{0.6in}{0.6in}
+%Two column margin
 \setlength\columnsep{0.33in}
+%Abstract format
 \renewenvironment{abstract}
  {\par\noindent\textbf{Abstract}\ \ignorespaces \\}
  {\par\noindent\medskip}
+%double line for abstract
 \newcommand{\doublerule}[1][.4pt]{%
   \noindent
   \makebox[0pt][l]{\rule[.7ex]{\linewidth}{#1}}%
   \rule[.3ex]{\linewidth}{#1}}
-\usepackage{titlesec}
-\titleformat{\section}
-  {\normalfont\scshape}{\textbf\thesection}{11pt}{\textbf}
-\titleformat{\subsection}
-  {\normalfont\scshape}{\textbf\thesubsection}{10pt}{\textbf}
+%Font setting for section
+\titleformat*{\section}
+    {\fontsize{11pt}{11}\bfseries} 
+%Font setting for subsection
+\titleformat*{\subsection}
+    {\fontsize{10pt}{10}\bfseries}
+%Font setting for subsubsection
+\titleformat*{\subsubsection}
+    {\fontsize{10pt}{10}\bfseries}
+%Korean for figure
 \renewcommand{\figurename}{그림}
+%Default line height
+\setstretch{1.5}
+\captionsetup[table]{font={stretch=1.3}}
+\captionsetup[figure]{font={stretch=1.3}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO: Change this metadata for change your title.
@@ -116,7 +143,6 @@
 \end{abstract}
 \doublerule
 \end{strip}
-
 \input{sections/body.tex}
 
 \printbibliography
@@ -131,5 +157,4 @@
 \input{sections/body_appendix.tex}
 % end of appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \end{document}
